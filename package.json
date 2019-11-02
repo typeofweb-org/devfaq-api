@@ -51,7 +51,7 @@
     "pg": "7.11.0",
     "pg-hstore": "2.3.3",
     "reflect-metadata": "0.1.13",
-    "sequelize": "4.44.0",
+    "sequelize": "5.15.1",
     "sequelize-typescript": "0.6.11",
     "tsconfig-paths": "3.8.0",
     "typesafe-hapi": "3.1.0",
