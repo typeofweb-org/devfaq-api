@@ -1,2 +1,10 @@
-- name: Danger JS
-  uses: danger/danger-js@9.1.8
+name: Danger JS
+
+on: pull_request
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Danger JS
+        uses: danger/danger-js@9.1.8
