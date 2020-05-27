@@ -3,7 +3,7 @@ name: Danger JS
 on: pull_request
 
 jobs:
-  auto-approve:
+  danger-js:
     runs-on: ubuntu-latest
     steps:
       - name: Danger JS
