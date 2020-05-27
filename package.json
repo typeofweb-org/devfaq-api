@@ -54,7 +54,7 @@
     "sequelize": "4.44.0",
     "sequelize-typescript": "0.6.11",
     "tsconfig-paths": "3.8.0",
-    "typesafe-hapi": "3.1.0",
+    "typesafe-hapi": "4.0.1",
     "typesafe-joi": "2.0.6",
     "uuid": "3.3.2",
     "vision": "5.4.4"
