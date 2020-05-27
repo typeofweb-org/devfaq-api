@@ -89,7 +89,7 @@
     "husky": "3.0.0",
     "mocha": "6.1.4",
     "nodemon": "1.19.1",
-    "prettier": "1.18.2",
+    "prettier": "2.0.5",
     "pretty-quick": "1.11.1",
     "sequelize-cli": "5.5.1",
     "sinon": "7.3.2",
