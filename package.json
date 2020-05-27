@@ -64,7 +64,7 @@
     "@types/boom": "7.2.1",
     "@types/chai": "4.1.7",
     "@types/chai-as-promised": "7.1.0",
-    "@types/chai-datetime": "0.0.32",
+    "@types/chai-datetime": "0.0.33",
     "@types/dotenv": "6.1.1",
     "@types/faker": "4.1.12",
     "@types/hapi-auth-cookie": "10.0.0",
