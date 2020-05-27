@@ -53,7 +53,7 @@
     "reflect-metadata": "0.1.13",
     "sequelize": "4.44.0",
     "sequelize-typescript": "0.6.11",
-    "tsconfig-paths": "3.8.0",
+    "tsconfig-paths": "3.9.0",
     "typesafe-hapi": "3.1.0",
     "typesafe-joi": "2.0.6",
     "uuid": "3.3.2",
