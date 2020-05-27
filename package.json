@@ -93,7 +93,7 @@
     "pretty-quick": "1.11.1",
     "sequelize-cli": "5.5.1",
     "sinon": "7.3.2",
-    "sinon-chai": "3.3.0",
+    "sinon-chai": "3.5.0",
     "ts-node": "8.3.0",
     "tsc-watch": "2.2.1",
     "tslint": "5.18.0",
