@@ -8,19 +8,30 @@ import Path from 'path';
 
 const sequelize = new Sequelize({ ...sequelizeConfig, logging: undefined });
 
-const umzug = new Umzug({
-  logging: console.info,
-  migrations: {
-    path: './src/migrations',
-    pattern: /\.ts$/,
-    params: [sequelize.getQueryInterface(), Sequelize],
-    nameFormatter(path) {
-      // ignore file extension to make it compatible with older .js migrations
-      return Path.basename(path).replace(Path.extname(path), '');
+const storageTableName = {
+  migration: { modelName: 'SequelizeMeta', path: './src/migrations' },
+  seeder: { modelName: 'SequelizeData', path: './src/seeders' },
+} as const;
+
+const getUmzug = (type: keyof typeof storageTableName) => {
+  const { path, modelName } = storageTableName[type];
+  return new Umzug({
+    logging: console.info,
+    migrations: {
+      path,
+      pattern: /\.ts$/,
+      params: [sequelize.getQueryInterface(), Sequelize],
+      nameFormatter(path) {
+        // ignore file extension to make it compatible with older .js migrations
+        return Path.basename(path, Path.extname(path));
+      },
     },
-  },
-  storage: new SequelizeStorage({ sequelize }),
-});
+    storage: new SequelizeStorage({
+      sequelize,
+      modelName,
+    }),
+  });
+};
 
 const execute = async (fn: () => Promise<Migration[]>, msg: string) => {
   fn()
@@ -37,5 +48,7 @@ const execute = async (fn: () => Promise<Migration[]>, msg: string) => {
     });
 };
 
-export const up = () => execute(() => umzug.up(), 'Executed migrations:');
-export const down = () => execute(() => umzug.down(), 'Reverted migration:');
+export const seedUp = () => execute(() => getUmzug('seeder').up(), 'Executed seeds:');
+export const seedDown = () => execute(() => getUmzug('seeder').down(), 'Reverted seeds:');
+export const migrateUp = () => execute(() => getUmzug('migration').up(), 'Executed migrations:');
+export const migrateDown = () => execute(() => getUmzug('migration').down(), 'Reverted migration:');
