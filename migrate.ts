@@ -14,11 +14,10 @@ const storageTableName = {
 } as const;
 
 const getUmzug = (type: keyof typeof storageTableName) => {
-  const { path, modelName } = storageTableName[type];
   return new Umzug({
     logging: console.info,
     migrations: {
-      path,
+      path: storageTableName[type].path,
       pattern: /\.ts$/,
       params: [sequelize.getQueryInterface(), Sequelize],
       nameFormatter(path) {
@@ -28,7 +27,7 @@ const getUmzug = (type: keyof typeof storageTableName) => {
     },
     storage: new SequelizeStorage({
       sequelize,
-      modelName,
+      modelName: storageTableName[type].modelName,
     }),
   });
 };
