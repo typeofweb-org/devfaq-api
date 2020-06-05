@@ -105,6 +105,12 @@
     "typescript": "3.9.5",
     "umzug": "3.0.0-beta.5"
   },
+  "engines": {
+    "node": "12.x.x"
+  },
+  "keywords": [],
+  "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
+  "license": "AGPL-3.0-only",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
