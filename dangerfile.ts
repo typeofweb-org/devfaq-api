@@ -2,19 +2,19 @@
 import { warn, danger, fail } from 'danger';
 
 /**
- * Check if package-lock.json is updated when package.json is changed
+ * Check if yarn.lock is updated when package.json is changed
  */
 {
   const packageChanged = danger.git.modified_files.includes('package.json');
-  const lockfileChanged = danger.git.modified_files.includes('package-lock.json');
+  const lockfileChanged = danger.git.modified_files.includes('yarn.lock');
   if (packageChanged && !lockfileChanged) {
-    const text = 'Changes were made to package.json, but not to package-lock.json!';
+    const text = 'Changes were made to package.json, but not to yarn.lock!';
     const idea = 'Perhaps you need to run `yarn install`?';
     warn(`${text} - <i>${idea}</i>`, 'package.json');
   } else if (!packageChanged && lockfileChanged) {
-    const text = 'Changes were made to package-lock.json, but not to package.json!';
-    const idea = 'Please revert package-lock.json';
-    fail(`${text} - <i>${idea}</i>`, 'package-lock.json');
+    const text = 'Changes were made to yarn.lock, but not to package.json!';
+    const idea = 'Please revert yarn.lock';
+    fail(`${text} - <i>${idea}</i>`, 'yarn.lock');
   }
 }
 
